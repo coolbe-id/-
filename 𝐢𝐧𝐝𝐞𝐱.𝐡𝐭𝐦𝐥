@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collective Barber Cibubur - Premium Cuts & Styling</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Collective Barber Cibubur. Barbershop premium dengan tema klasik modern di Kota Wisata. Founder: Ali Valeryan. Booking via Minutes App atau WhatsApp.">
+    <meta name="keywords" content="collective barber, barbershop cibubur, ali valeryan, potong rambut cibubur, minutes app, cukur rambut pria, barbershop kota wisata">
+    <meta name="author" content="Ali Valeryan">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Open Graph / Facebook / WhatsApp Preview -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:url" content="https://collectivebarber.id/">
+    <meta property="og:title" content="Collective Barber Cibubur">
+    <meta property="og:description" content="Define Your Character. Premium cuts by Ali Valeryan & Team.">
+    <meta property="og:image" content="https://i.ibb.co.com/gL1p6Fnj/file-000000007b6872078167dc055c6a30d4.png">
+    <meta property="og:site_name" content="Collective Barber">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Collective Barber Cibubur">
+    <meta name="twitter:description" content="Premium grooming space in Cibubur. Led by Ali Valeryan.">
+    <meta name="twitter:image" content="https://i.ibb.co.com/gL1p6Fnj/file-000000007b6872078167dc055c6a30d4.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✂️</text></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;900&family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Cinzel', 'serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 25s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+            border-left: 2px solid black;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #000000;
+            border: 2px solid white;
+        }
+        
+        .text-stroke {
+            -webkit-text-stroke: 1px black;
+            color: transparent;
+        }
+        
+        /* Noise Overlay for Texture */
+        .bg-noise {
+            position: relative;
+        }
+        .bg-noise::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* LIVE CHAT OVERRIDES (Hapus Floating) */
+        #livechat-compact-container,
+        #livechat-full,
+        iframe[title="LiveChat chat widget"] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-black font-sans selection:bg-black selection:text-white overflow-x-hidden relative">
+
+    <!-- BOOKING OVERLAY (FULL PAGE LIVE CHAT) -->
+    <div id="booking-overlay" class="fixed inset-0 z-[100] bg-[#f5f5f5] transform translate-y-full transition-transform duration-500 ease-in-out flex flex-col">
+        <!-- Overlay Header -->
+        <div class="bg-white border-b-4 border-black p-4 flex justify-between items-center shadow-md z-10">
+            <div class="flex items-center gap-3">
+                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <h2 class="font-mono font-bold uppercase text-sm md:text-lg">Reservation Desk (Online)</h2>
+            </div>
+            <button onclick="toggleBookingPage()" class="group flex items-center gap-2 font-black uppercase hover:text-red-600 transition-colors">
+                <span class="hidden md:inline">Close Window</span>
+                <i data-lucide="x-square" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Inline Chat Container -->
+        <div class="flex-1 w-full h-full relative bg-[#f5f5f5] p-0 md:p-8 flex items-center justify-center">
+            <div class="w-full h-full md:max-w-4xl md:h-[90%] bg-white border-x-0 md:border-4 border-black shadow-none md:shadow-[10px_10px_0px_0px_rgba(0,0,0,0.2)] flex flex-col overflow-hidden">
+                <!-- Iframe Header Decoration -->
+                <div class="bg-black text-white px-4 py-2 font-mono text-xs flex justify-between hidden md:flex">
+                    <span>SECURE_CONNECTION://COLLECTIVE.CHAT</span>
+                    <span>V.1.0</span>
+                </div>
+                <!-- THE INLINE CHAT IFRAME -->
+                <iframe 
+                    src="https://direct.lc.chat/19391971/" 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0"
+                    class="flex-1"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/6282280001535?text=Halo%20Collective%20Barber,%20saya%20ingin%20booking..." target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center group">
+        <i data-lucide="message-circle" class="w-8 h-8"></i>
+        <span class="absolute right-full mr-4 bg-black text-white text-xs font-mono py-1 px-2 rounded hidden group-hover:block whitespace-nowrap">
+            Chat on WhatsApp
+        </span>
+    </a>
+
+    <!-- MARQUEE TOP -->
+    <div class="bg-black text-white py-2 overflow-hidden border-b-4 border-black sticky top-0 z-50">
+        <div class="whitespace-nowrap animate-marquee flex space-x-8 font-mono text-xs md:text-sm uppercase tracking-[0.2em]">
+            <span>COLLECTIVE BARBER CIBUBUR</span><span>•</span>
+            <span>BOOK VIA LIVE CHAT</span><span>•</span>
+            <span>FOUNDED BY ALI VALERYAN</span><span>•</span>
+            <span>OPEN 10:00 - 21:00</span><span>•</span>
+            <span>NOVEL CUTS & CLASSIC SHAVES</span><span>•</span>
+            <span>COLLECTIVE BARBER CIBUBUR</span><span>•</span>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="border-b-4 border-black flex justify-between items-stretch bg-white relative z-40 h-20 md:h-24 sticky top-[38px] md:top-[42px]">
+        <!-- Logo -->
+        <a href="#" class="w-1/2 md:w-1/4 border-r-4 border-black flex items-center justify-center hover:bg-black hover:text-white transition-all group px-4">
+            <div class="text-center leading-none">
+                <h1 class="font-display font-black text-2xl md:text-3xl tracking-tighter group-hover:tracking-widest transition-all duration-300">COLLECTIVE</h1>
+                <p class="font-serif italic text-xs md:text-sm tracking-widest">Barbershop</p>
+            </div>
+        </a>
+        
+        <!-- Desktop Links -->
+        <div class="hidden md:flex flex-1 justify-center items-center font-serif italic text-lg space-x-8 lg:space-x-12">
+            <a href="#about" class="hover:underline decoration-4 underline-offset-8">The Narrative</a>
+            <a href="#founder" class="hover:underline decoration-4 underline-offset-8">The Founder</a>
+            <a href="#gallery" class="hover:underline decoration-4 underline-offset-8">Gallery</a>
+            <a href="#services" class="hover:underline decoration-4 underline-offset-8">Services</a>
+            <a href="#contact" class="hover:underline decoration-4 underline-offset-8">Location</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden w-1/4 border-l-4 border-black flex items-center justify-center active:bg-black active:text-white">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+        </button>
+
+        <!-- CTA Button (Desktop) -->
+        <div class="hidden md:flex w-1/4 border-l-4 border-black items-center justify-center bg-white p-2">
+            <!-- TRIGGER BOOKING PAGE -->
+            <button onclick="toggleBookingPage()" class="w-full h-full flex items-center justify-center bg-black text-white font-mono font-bold uppercase tracking-wider hover:bg-white hover:text-black border-2 border-transparent hover:border-black transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.3)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                Book Now
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-30 transform translate-x-full transition-transform duration-300 pt-32 px-6 flex flex-col border-l-4 border-black h-screen overflow-y-auto">
+        <a href="#about" class="text-3xl font-serif font-bold border-b-2 border-black py-4" onclick="toggleMenu()">About</a>
+        <a href="#founder" class="text-3xl font-serif font-bold border-b-2 border-black py-4" onclick="toggleMenu()">Founder</a>
+        <a href="#gallery" class="text-3xl font-serif font-bold border-b-2 border-black py-4" onclick="toggleMenu()">Gallery</a>
+        <a href="#services" class="text-3xl font-serif font-bold border-b-2 border-black py-4" onclick="toggleMenu()">Services</a>
+        <!-- MOBILE BOOK BUTTON -->
+        <button onclick="toggleMenu(); toggleBookingPage()" class="text-3xl font-mono font-bold bg-black text-white py-4 px-2 mt-4 text-center">
+            BOOK VIA WEB
+        </button>
+        <button onclick="toggleMenu()" class="absolute top-4 right-4 p-2 border-2 border-black">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+    </div>
+
+    <!-- HERO SECTION -->
+    <header class="grid grid-cols-1 md:grid-cols-12 border-b-4 border-black min-h-[80vh] bg-noise">
+        <!-- Hero Text -->
+        <div class="md:col-span-7 p-8 md:p-16 flex flex-col justify-center border-b-4 md:border-b-0 md:border-r-4 border-black relative">
+            <div class="absolute top-4 left-4 font-mono text-xs border border-black px-2 py-1 bg-white z-20">VOL. 01 — 2024</div>
+            
+            <h2 class="text-6xl md:text-8xl font-black uppercase leading-[0.85] tracking-tighter mb-8 mt-12 z-20 relative">
+                Define<br>
+                <span class="text-stroke text-white drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">Your</span><br>
+                Character
+            </h2>
+            
+            <p class="font-serif italic text-xl md:text-2xl max-w-lg leading-relaxed border-l-4 border-black pl-6 mb-10 z-20">
+                "Estetika klasik bertemu kultur brutal jalanan. Kami tidak hanya memangkas rambut, kami menyusun ulang narasi Anda."
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-4 z-20">
+                <!-- TRIGGER BOOKING PAGE -->
+                <button onclick="toggleBookingPage()" class="bg-black text-white px-8 py-4 font-mono font-bold uppercase text-center border-2 border-black hover:bg-white hover:text-black transition-colors shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center gap-2">
+                    <span>Start Your Story</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+                <a href="https://wa.me/6282280001535" class="px-8 py-4 font-mono font-bold uppercase text-center border-2 border-black hover:bg-gray-100 transition-colors flex items-center justify-center gap-2">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> Whatsapp Booking
+                </a>
+            </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="md:col-span-5 relative h-[50vh] md:h-auto overflow-hidden group">
+            <img src="https://i.ibb.co.com/fdHCWG84/Screenshot-20251125-103319-2.jpg" alt="Barber Cutting Hair" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700">
+            
+            <!-- Sticker Overlay -->
+            <div class="absolute bottom-8 right-8 bg-white border-2 border-black p-4 rotate-[-3deg] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] z-20">
+                <p class="font-mono text-center font-bold text-sm">LOCATED IN<br>CIBUBUR</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- FOUNDER PROFILE SECTION -->
+    <section id="founder" class="border-b-4 border-black grid grid-cols-1 md:grid-cols-12 bg-white">
+        <div class="md:col-span-5 border-b-4 md:border-b-0 md:border-r-4 border-black relative h-[500px] md:h-auto overflow-hidden">
+            <img src="https://i.ibb.co.com/bgLLHk8r/Screenshot-20251125-102702-2.jpg" alt="Ali Valeryan" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+            <div class="absolute bottom-0 left-0 bg-black text-white px-6 py-2 border-t-2 border-r-2 border-white">
+                <span class="font-mono text-sm uppercase tracking-widest">The Architect</span>
+            </div>
+        </div>
+
+        <div class="md:col-span-7 p-8 md:p-16 flex flex-col justify-center bg-gray-50">
+            <div class="mb-6">
+                <h2 class="text-4xl md:text-6xl font-black uppercase mb-2">Ali Valeryan</h2>
+                <div class="h-1 w-24 bg-black"></div>
+            </div>
+            
+            <div class="font-serif text-lg md:text-xl leading-relaxed text-justify space-y-4 mb-8">
+                <p>
+                    <span class="text-5xl float-left mr-2 mt-[-10px] font-black">S</span>ebagai pendiri Collective Barber, Ali Valeryan membawa visi untuk mengubah rutinitas pangkas rambut menjadi sebuah pengalaman artistik. Dengan dedikasi pada detail dan passion pada kultur barbering, Ali menciptakan ruang di mana setiap pria bisa menemukan versi terbaik dari dirinya.
+                </p>
+                <p class="italic text-gray-600">
+                    "Gaya bukan sekadar penampilan, tapi bagaimana kita memperkenalkan diri pada dunia tanpa harus bicara."
+                </p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/alivaleryan?igsh=dDRydXM0NTF3Y3Vk" target="_blank" class="flex items-center gap-2 border-2 border-black px-6 py-2 font-mono font-bold uppercase hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                    <i data-lucide="instagram" class="w-4 h-4"></i> Follow Founder
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY / PORTFOLIO SECTION -->
+    <section id="gallery" class="border-b-4 border-black py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-black uppercase inline-block border-b-4 border-black pb-2">Visual Evidence</h2>
+                <p class="font-serif italic mt-4">Selected works from our chair.</p>
+            </div>
+
+            <!-- Brutalist Grid Gallery -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="aspect-square border-2 border-black relative group overflow-hidden">
+                    <img src="https://i.ibb.co.com/ccJtVcXG/Screenshot-20251125-103125-2.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+                <div class="aspect-square border-2 border-black relative group overflow-hidden">
+                    <img src="https://i.ibb.co.com/ZzfPkDRY/Screenshot-20251125-103137-2.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+                <div class="aspect-square border-2 border-black relative group overflow-hidden">
+                    <img src="https://i.ibb.co.com/23qzd7YP/Screenshot-20251125-103149-2.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+                <div class="aspect-square border-2 border-black relative group overflow-hidden">
+                    <img src="https://i.ibb.co.com/gxpQx0F/Screenshot-20251125-103157-2.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="https://www.instagram.com/collective.barber?igsh=bnhjZ2N2cHRoZGQy" target="_blank" class="inline-flex items-center gap-2 font-mono font-bold underline hover:no-underline">
+                    VIEW FULL GALLERY ON INSTAGRAM <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="max-w-7xl mx-auto py-16 px-6 border-b-4 border-black">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-black uppercase inline-block border-b-4 border-black pb-2">Service Menu</h2>
+            <p class="font-serif italic mt-4">Professional Grooming Services</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+            <div class="group py-6 border-b-2 border-gray-300 hover:border-black transition-colors flex justify-between items-start">
+                <div>
+                    <h4 class="text-xl font-bold uppercase mb-1 group-hover:pl-2 transition-all">Gentleman's Cut</h4>
+                    <p class="font-serif text-gray-600 text-sm">Consultation, Precision Cut, Wash, Styling.</p>
+                </div>
+                <div class="text-right">
+                    <span class="block font-mono font-bold text-lg">85K</span>
+                    <span class="text-xs text-gray-500 font-mono">45 MIN</span>
+                </div>
+            </div>
+            <div class="group py-6 border-b-2 border-gray-300 hover:border-black transition-colors flex justify-between items-start">
+                <div>
+                    <h4 class="text-xl font-bold uppercase mb-1 group-hover:pl-2 transition-all">Hot Towel Shave</h4>
+                    <p class="font-serif text-gray-600 text-sm">Classic straight razor shave ritual.</p>
+                </div>
+                <div class="text-right">
+                    <span class="block font-mono font-bold text-lg">50K</span>
+                    <span class="text-xs text-gray-500 font-mono">30 MIN</span>
+                </div>
+            </div>
+            <div class="group py-6 border-b-2 border-gray-300 hover:border-black transition-colors flex justify-between items-start">
+                <div>
+                    <h4 class="text-xl font-bold uppercase mb-1 group-hover:pl-2 transition-all">Kids Cut (U-12)</h4>
+                    <p class="font-serif text-gray-600 text-sm">Gentle styling for young gentlemen.</p>
+                </div>
+                <div class="text-right">
+                    <span class="block font-mono font-bold text-lg">75K</span>
+                    <span class="text-xs text-gray-500 font-mono">40 MIN</span>
+                </div>
+            </div>
+             <div class="group py-6 border-b-2 border-gray-300 hover:border-black transition-colors flex justify-between items-start">
+                <div>
+                    <h4 class="text-xl font-bold uppercase mb-1 group-hover:pl-2 transition-all">Hair Coloring</h4>
+                    <p class="font-serif text-gray-600 text-sm">Full color or highlights.</p>
+                </div>
+                <div class="text-right">
+                    <span class="block font-mono font-bold text-lg">250K+</span>
+                    <span class="text-xs text-gray-500 font-mono">120 MIN</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-12 text-center">
+             <!-- TRIGGER BOOKING PAGE -->
+             <button onclick="toggleBookingPage()" class="inline-block bg-black text-white px-10 py-3 font-mono font-bold uppercase hover:bg-white hover:text-black border-2 border-black transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                Book via Web (Live Chat)
+            </button>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD APP SECTION -->
+    <section id="download" class="bg-black text-white border-b-4 border-black py-16 px-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 border-l-2 border-b-2 border-white opacity-20 transform translate-x-10 -translate-y-10"></div>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <span class="font-mono text-green-400 border border-green-400 px-2 py-1 text-xs uppercase mb-4 inline-block">App Booking</span>
+                <h2 class="text-4xl md:text-6xl font-black uppercase mb-6 leading-none">Skip The Queue.<br>Book via <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-500">Minutes.</span></h2>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://play.google.com/store/apps/details?id=com.minutes.app" target="_blank" class="flex items-center bg-white text-black px-6 py-3 border-2 border-white hover:bg-black hover:text-white transition-all group shadow-[4px_4px_0px_0px_rgba(100,100,100,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="h-10">
+                    </a>
+                </div>
+            </div>
+            
+             <div class="relative flex justify-center">
+                <div class="w-64 h-96 border-4 border-white bg-black relative p-2 shadow-[20px_20px_0px_0px_rgba(50,50,50,1)] rotate-3">
+                    <div class="w-full h-full bg-white flex flex-col items-center justify-center text-black relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1599351431202-6e0005a74125?q=80&w=2070')] bg-cover opacity-20"></div>
+                        <h3 class="font-black text-2xl uppercase mb-2 relative z-10">Minutes</h3>
+                        <div class="mt-4 w-16 h-16 bg-black rounded-full flex items-center justify-center text-white relative z-10">
+                            <i data-lucide="check" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section id="contact" class="grid grid-cols-1 md:grid-cols-2 border-b-4 border-black min-h-[500px]">
+        <div class="p-8 md:p-16 flex flex-col justify-center border-b-4 md:border-b-0 md:border-r-4 border-black bg-[#fdfbf7]">
+          <h3 class="font-serif text-5xl font-bold mb-6">Chapter: Location</h3>
+          <div class="space-y-6 font-serif text-lg">
+             <p class="flex items-start gap-4">
+               <i data-lucide="map-pin" class="shrink-0 mt-1"></i>
+               <span>
+                 <strong>Collective Barber Cibubur</strong><br/>
+                 Ruko Madison Square, Blok SHC 2,<br/>
+                 Kota Wisata, Cibubur
+               </span>
+             </p>
+             <div class="pt-4 border-t border-black">
+                <p class="flex items-center gap-4 mb-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i> +62 822-8000-1535
+                </p>
+                <p class="flex items-center gap-4">
+                    <i data-lucide="mail" class="w-5 h-5"></i> collectivebarber81@gmail.com
+                </p>
+             </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-200 relative">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.544719293126!2d106.9748680749911!3d-6.372079093618118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699479b2915839%3A0x673966580f13501a!2sKota%20Wisata%20Cibubur!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" 
+            width="100%" 
+            height="100%" 
+            style="border:0; filter: grayscale(100%);" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+          
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+             <a 
+               href="https://maps.app.goo.gl/GpeLsvpmDszVhX9A8" 
+               target="_blank"
+               rel="noopener noreferrer"
+               class="pointer-events-auto bg-white border-2 border-black px-6 py-3 font-bold uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2"
+             >
+               Get Directions <i data-lucide="external-link" class="w-4 h-4"></i>
+             </a>
+          </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="col-span-1 md:col-span-2">
+                <h2 class="font-display font-black text-3xl mb-2">COLLECTIVE.</h2>
+                <p class="font-mono text-xs text-gray-500 uppercase mb-4">Part of Dropdead.World Aesthetic</p>
+            </div>
+            
+            <div>
+                <h4 class="font-bold uppercase border-b border-white pb-2 mb-4 inline-block">Sitemap</h4>
+                <ul class="space-y-2 font-mono text-sm">
+                    <li><a href="#about" class="hover:underline">The Narrative</a></li>
+                    <li><a href="#services" class="hover:underline">Services</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-bold uppercase border-b border-white pb-2 mb-4 inline-block">Booking</h4>
+                <ul class="space-y-2 font-mono text-sm">
+                    <li><button onclick="toggleBookingPage()" class="hover:underline">Live Chat Web</button></li>
+                    <li><a href="https://wa.me/6282280001535" class="hover:underline">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center font-mono text-xs text-gray-500 uppercase">
+            <p>&copy; 2024 Collective Barber Cibubur.</p>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- JS Logic -->
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('translate-x-full')) {
+                menu.classList.remove('translate-x-full');
+            } else {
+                menu.classList.add('translate-x-full');
+            }
+        }
+
+        document.getElementById('menu-btn').addEventListener('click', toggleMenu);
+
+        // Toggle Booking Page (Live Chat Overlay)
+        function toggleBookingPage() {
+            const overlay = document.getElementById('booking-overlay');
+            if (overlay.classList.contains('translate-y-full')) {
+                // Open
+                overlay.classList.remove('translate-y-full');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling bg
+            } else {
+                // Close
+                overlay.classList.add('translate-y-full');
+                document.body.style.overflow = 'auto'; // Enable scrolling bg
+            }
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement){
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
